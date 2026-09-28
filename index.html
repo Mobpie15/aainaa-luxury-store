@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AAINAA Designs — The Luxury of Simplicity | Bespoke Indian D2C Fashion</title>
+  <meta name="description" content="Discover AAINAA Designs. Handcrafted Modal Silk Kaftans, Mul Chanderi Suits, and artisanal fabrics from Kakkanad, Kochi. Bespoke made-to-measure tailoring and worldwide shipping.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Luxury Stylesheet -->
+  <link rel="stylesheet" href="assets/css/luxury-custom.css">
+  
+  <link rel="icon" type="image/png" href="assets/images/branding/logo_transparent.png">
+</head>
+<body class="bg-[var(--bg-canvas)] text-[var(--text-ink)] antialiased selection:bg-[var(--accent-gold-light)] selection:text-[var(--text-ink)]">
+
+  <!-- =========================================================================
+       1. LUXURY ANNOUNCEMENT MARQUEE
+       ========================================================================= -->
+  <div class="bg-[var(--text-ink)] text-white py-2.5 text-[11px] tracking-widest uppercase font-medium border-b border-[var(--border-subtle)] overflow-hidden">
+    <div class="marquee-container">
+      <div class="marquee-content gap-12">
+        <span class="flex items-center gap-2"><span>✦</span> 100% Authentic Handcrafted Indian Fabrics</span>
+        <span class="flex items-center gap-2"><span>✦</span> Bespoke Made-to-Measure Alterations Available</span>
+        <span class="flex items-center gap-2"><span>✦</span> 1-Hour Express Local Delivery in Kochi & Kakkanad</span>
+        <span class="flex items-center gap-2"><span>✦</span> Free Express Shipping on Orders Above ₹2,500</span>
+        <span class="flex items-center gap-2"><span>✦</span> Worldwide Shipping to US, UK, UAE & Global Diaspora</span>
+      </div>
+      <div class="marquee-content gap-12" aria-hidden="true">
+        <span class="flex items-center gap-2"><span>✦</span> 100% Authentic Handcrafted Indian Fabrics</span>
+        <span class="flex items-center gap-2"><span>✦</span> Bespoke Made-to-Measure Alterations Available</span>
+        <span class="flex items-center gap-2"><span>✦</span> 1-Hour Express Local Delivery in Kochi & Kakkanad</span>
+        <span class="flex items-center gap-2"><span>✦</span> Free Express Shipping on Orders Above ₹2,500</span>
+        <span class="flex items-center gap-2"><span>✦</span> Worldwide Shipping to US, UK, UAE & Global Diaspora</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. GLASSMORPHISM NAVIGATION
+       ========================================================================= -->
+  <header id="main-nav" class="nav-glass sticky top-0 z-40 px-4 md:px-10 py-3.5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Mobile Menu Button -->
+      <div class="flex items-center lg:hidden">
+        <button onclick="window.toggleMobileMenu()" class="p-2 text-[var(--text-ink)] hover:text-[var(--accent-gold-dark)] focus:outline-none" aria-label="Open Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Desktop Nav Links (Left) -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-medium uppercase tracking-widest text-[var(--text-muted)]">
+        <a href="#catalog" class="hover:text-[var(--text-ink)] transition-colors">The Atelier</a>
+        <a href="#collections" class="hover:text-[var(--text-ink)] transition-colors">Silhouettes</a>
+        <a href="#bespoke" class="hover:text-[var(--text-ink)] transition-colors">Made-to-Measure</a>
+        <a href="#founder" class="hover:text-[var(--text-ink)] transition-colors">Our Story</a>
+      </nav>
+
+      <!-- Center Brand Logo -->
+      <a href="#" class="flex items-center justify-center py-1">
+        <img src="assets/images/branding/logo_transparent.png" alt="AAINAA Designs" class="h-9 md:h-12 w-auto object-contain hover:opacity-90 transition-opacity">
+      </a>
+
+      <!-- Right Utility Actions -->
+      <div class="flex items-center gap-4 md:gap-6">
+        
+        <!-- Live WhatsApp Concierge Status -->
+        <a href="https://wa.me/916282719098?text=Hello%20AAINAA%20Studio%2C%20I%20am%20exploring%20your%20collection." target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-[11px] font-medium tracking-wide hover:bg-emerald-100 transition-colors">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Studio Concierge</span>
+        </a>
+
+        <!-- Wishlist Button -->
+        <button onclick="window.openWishlist()" class="relative p-2 text-[var(--text-ink)] hover:text-rose-600 transition-colors flex items-center gap-1.5" aria-label="Open Wishlist">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="hidden md:inline text-xs font-semibold uppercase tracking-wider">Saved</span>
+          <span class="wishlist-count-badge hidden absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white text-[9px] font-bold rounded-full items-center justify-center">0</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button onclick="window.openCart()" class="relative p-2 text-[var(--text-ink)] hover:text-[var(--accent-gold-dark)] transition-colors flex items-center gap-2" aria-label="Open Shopping Bag">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="hidden md:inline text-xs font-semibold uppercase tracking-wider">Bag</span>
+          <span class="cart-count-badge hidden absolute -top-1 -right-1 w-5 h-5 bg-[var(--text-ink)] text-white text-[10px] font-bold rounded-full items-center justify-center border-2 border-white">0</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       3. HERO EDITORIAL SECTION
+       ========================================================================= -->
+  <section class="relative bg-[var(--bg-card)] overflow-hidden border-b border-[var(--border-subtle)]">
+    <div class="max-w-7xl mx-auto px-4 md:px-10 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Copy Column -->
+      <div class="lg:col-span-6 z-10 space-y-6">
+        <div class="hero-anim-badge inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[var(--border-gold)] text-[var(--accent-gold-dark)] text-xs font-semibold uppercase tracking-widest shadow-sm">
+          <span>✦</span>
+          <span>Kakkanad Atelier • Est. 2014</span>
+        </div>
+
+        <h1 class="hero-anim-title font-serif text-4xl sm:text-5xl lg:text-6xl font-light text-[var(--text-ink)] leading-[1.15]">
+          The Architecture of <br>
+          <span class="italic font-normal text-[var(--accent-gold-dark)]">Unhurried Grace.</span>
+        </h1>
+
+        <p class="hero-anim-desc text-base text-[var(--text-muted)] font-light leading-relaxed max-w-lg">
+          Impeccably tailored Modal Silk Kaftans, Mul Chanderi suits, and hand-block Ajrakh textiles crafted for the discerning modern woman who believes luxury lies in effortless simplicity.
+        </p>
+
+        <div class="hero-anim-cta pt-4 flex flex-wrap items-center gap-4">
+          <a href="#catalog" class="px-8 py-3.5 btn-gold rounded-full text-xs font-bold uppercase tracking-widest shadow-lg inline-flex items-center gap-2">
+            <span>Explore The Collection</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <button onclick="window.openBespokeDialog()" class="px-7 py-3.5 btn-outline-gold rounded-full text-xs font-semibold uppercase tracking-widest inline-flex items-center gap-2">
+            <span>Bespoke Custom Fit</span>
+          </button>
+        </div>
+
+        <!-- Micro Social Proof -->
+        <div class="hero-anim-stats pt-6 border-t border-[var(--border-subtle)] flex items-center gap-8 text-xs text-[var(--text-muted)]">
+          <div>
+            <span class="block font-serif text-2xl font-semibold text-[var(--text-ink)]">10+ Years</span>
+            <span class="text-[11px] uppercase tracking-wider text-[var(--text-light)]">Artisanal Mastery</span>
+          </div>
+          <div class="w-px h-8 bg-stone-300"></div>
+          <div>
+            <span class="block font-serif text-2xl font-semibold text-[var(--text-ink)]">100%</span>
+            <span class="text-[11px] uppercase tracking-wider text-[var(--text-light)]">Natural Pure Weaves</span>
+          </div>
+          <div class="w-px h-8 bg-stone-300"></div>
+          <div>
+            <span class="block font-serif text-2xl font-semibold text-[var(--text-ink)]">1-Hour</span>
+            <span class="text-[11px] uppercase tracking-wider text-[var(--text-light)]">Kochi Local Delivery</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Visual Feature -->
+      <div class="lg:col-span-6 relative">
+        <div class="relative mx-auto max-w-md lg:max-w-none">
+          
+          <!-- Main Hero Frame -->
+          <div class="hero-img-anim luxury-image-wrapper rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] border border-[var(--border-subtle)]">
+            <img src="assets/images/branding/banner_festive_1.png" alt="AAINAA Festive Silk Collection" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Floating Floating Bespoke Tag -->
+          <div class="hero-float-tag absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-xl border border-[var(--border-gold)] max-w-xs hidden sm:block">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[var(--accent-gold)]"></span>
+              <span class="text-[11px] uppercase tracking-widest font-bold text-[var(--accent-gold-dark)]">The Signature Kaftan</span>
+            </div>
+            <p class="text-xs text-[var(--text-muted)] font-serif italic text-sm">
+              "When you purchase from us, it is a timeless garment with an impeccable bespoke fit."
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. STRATEGIC SENSORY PILLARS
+       ========================================================================= -->
+  <section class="py-12 bg-[var(--bg-canvas)] border-b border-[var(--border-subtle)]">
+    <div class="max-w-7xl mx-auto px-4 md:px-10">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <div class="reveal stagger-1 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-white border border-[var(--border-gold)] flex items-center justify-center flex-shrink-0 text-[var(--accent-gold-dark)] shadow-sm">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <h4 class="font-serif text-base font-semibold text-[var(--text-ink)]">Sensorially Pure Weaves</h4>
+            <p class="text-xs text-[var(--text-muted)] mt-1 leading-relaxed">Handpicked Modal Silks, Chanderi, and breathable Mulmul cottons.</p>
+          </div>
+        </div>
+
+        <div class="reveal stagger-2 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-white border border-[var(--border-gold)] flex items-center justify-center flex-shrink-0 text-[var(--accent-gold-dark)] shadow-sm">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M4.93 19.07l4.24-4.24"/></svg>
+          </div>
+          <div>
+            <h4 class="font-serif text-base font-semibold text-[var(--text-ink)]">Bespoke Made-to-Measure</h4>
+            <p class="text-xs text-[var(--text-muted)] mt-1 leading-relaxed">No woman should be limited by generic sizing tags. We tailor to your frame.</p>
+          </div>
+        </div>
+
+        <div class="reveal stagger-3 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-white border border-[var(--border-gold)] flex items-center justify-center flex-shrink-0 text-[var(--accent-gold-dark)] shadow-sm">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h4 class="font-serif text-base font-semibold text-[var(--text-ink)]">1-Hour Local Express</h4>
+            <p class="text-xs text-[var(--text-muted)] mt-1 leading-relaxed">Direct from our Kakkanad studio to your doorstep within Kochi limits.</p>
+          </div>
+        </div>
+
+        <div class="reveal stagger-4 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-xl bg-white border border-[var(--border-gold)] flex items-center justify-center flex-shrink-0 text-[var(--accent-gold-dark)] shadow-sm">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div>
+            <h4 class="font-serif text-base font-semibold text-[var(--text-ink)]">Worldwide Delivery</h4>
+            <p class="text-xs text-[var(--text-muted)] mt-1 leading-relaxed">Prepaid Air Cargo to US, UK, Canada, UAE & worldwide with live tracking.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. FEATURED COLLECTIONS SPOTLIGHT
+       ========================================================================= -->
+  <section id="collections" class="py-20 bg-[var(--bg-canvas)]">
+    <div class="max-w-7xl mx-auto px-4 md:px-10">
+      
+      <div class="reveal text-center max-w-xl mx-auto mb-14">
+        <span class="text-xs font-semibold uppercase tracking-widest text-[var(--accent-gold-dark)]">Curated Editions</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-light text-[var(--text-ink)] mt-2">
+          Signature Silhouettes
+        </h2>
+        <div class="w-12 h-0.5 bg-[var(--accent-gold)] mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Collection 1 -->
+        <div class="luxury-card reveal reveal-scale stagger-1 group rounded-3xl overflow-hidden bg-white border border-[var(--border-subtle)] shadow-sm hover:shadow-xl transition-all duration-500">
+          <div class="luxury-image-wrapper aspect-[3/4] relative">
+            <img src="assets/images/products/09_modal-silk-kaftan-dress-soft-ivory-copy.png" alt="Modal Silk Kaftans" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 text-white">
+              <span class="text-[10px] uppercase tracking-widest text-[var(--accent-gold-light)] font-semibold block mb-1">Drape & Flow</span>
+              <h3 class="font-serif text-2xl font-medium">Modal Silk Kaftans</h3>
+              <p class="text-xs text-white/80 mt-1">Effortless day-to-evening fluid grace.</p>
+            </div>
+          </div>
+          <div class="p-6 flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">From ₹2,400</span>
+            <button onclick="document.querySelector('[data-category=\'Kaftans & Dresses\']').click(); document.getElementById('catalog').scrollIntoView({behavior: 'smooth'});" class="text-xs font-bold uppercase tracking-widest text-[var(--accent-gold-dark)] hover:text-[var(--text-ink)] transition-colors inline-flex items-center gap-1">
+              <span>View Silhouettes</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Collection 2 -->
+        <div class="luxury-card reveal reveal-scale stagger-2 group rounded-3xl overflow-hidden bg-white border border-[var(--border-subtle)] shadow-sm hover:shadow-xl transition-all duration-500">
+          <div class="luxury-image-wrapper aspect-[3/4] relative">
+            <img src="assets/images/products/17_charcoal-grey-mul-chanderi-embroidered-f.png" alt="Mul Chanderi Suits" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 text-white">
+              <span class="text-[10px] uppercase tracking-widest text-[var(--accent-gold-light)] font-semibold block mb-1">Festive Occasion</span>
+              <h3 class="font-serif text-2xl font-medium">Mul Chanderi Suits</h3>
+              <p class="text-xs text-white/80 mt-1">Intricate tone-on-tone embroidery.</p>
+            </div>
+          </div>
+          <div class="p-6 flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">From ₹2,800</span>
+            <button onclick="document.querySelector('[data-category=\'Bespoke Suits\']').click(); document.getElementById('catalog').scrollIntoView({behavior: 'smooth'});" class="text-xs font-bold uppercase tracking-widest text-[var(--accent-gold-dark)] hover:text-[var(--text-ink)] transition-colors inline-flex items-center gap-1">
+              <span>View Silhouettes</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Collection 3 -->
+        <div class="luxury-card reveal reveal-scale stagger-3 group rounded-3xl overflow-hidden bg-white border border-[var(--border-subtle)] shadow-sm hover:shadow-xl transition-all duration-500">
+          <div class="luxury-image-wrapper aspect-[3/4] relative">
+            <img src="assets/images/products/01_premium-quality-cotton-with-elegant-bloc.png" alt="Artisanal Hand-Block Fabrics" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 text-white">
+              <span class="text-[10px] uppercase tracking-widest text-[var(--accent-gold-light)] font-semibold block mb-1">The Textile Vault</span>
+              <h3 class="font-serif text-2xl font-medium">Artisanal Fabrics</h3>
+              <p class="text-xs text-white/80 mt-1">Pure Ajrakh & hand-block yardage.</p>
+            </div>
+          </div>
+          <div class="p-6 flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)]">From ₹180 / meter</span>
+            <button onclick="document.querySelector('[data-category=\'Artisanal Fabrics\']').click(); document.getElementById('catalog').scrollIntoView({behavior: 'smooth'});" class="text-xs font-bold uppercase tracking-widest text-[var(--accent-gold-dark)] hover:text-[var(--text-ink)] transition-colors inline-flex items-center gap-1">
+              <span>View Silhouettes</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. THE MAIN INTERACTIVE CATALOG & SHOWROOM
+       ========================================================================= -->
+  <section id="catalog" class="py-20 bg-[var(--bg-card)] border-t border-b border-[var(--border-subtle)]">
+    <div class="max-w-7xl mx-auto px-4 md:px-10">
+      
+      <!-- Section Header -->
+      <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-widest text-[var(--accent-gold-dark)]">The Full Archive</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-light text-[var(--text-ink)] mt-1.5">
+            Curated Atelier Collection
+          </h2>
+          <p class="text-xs text-[var(--text-muted)] mt-1">Explore all verified Kerala-made silhouettes with custom size options.</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative w-full md:w-72">
+          <input type="text" id="search-input" placeholder="Search by fabric, craft..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-[var(--border-subtle)] rounded-full text-xs text-[var(--text-ink)] placeholder-stone-400 focus:outline-none focus:border-[var(--accent-gold)] shadow-sm transition-all">
+          <svg class="absolute left-3.5 top-3 text-stone-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="reveal stagger-1 flex items-center gap-2.5 overflow-x-auto pb-4 mb-10 scrollbar-none">
+        <button class="filter-pill active px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase whitespace-nowrap" data-category="All">
+          All Silhouettes
+        </button>
+        <button class="filter-pill px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase whitespace-nowrap" data-category="Kaftans & Dresses">
+          Kaftans & Dresses
+        </button>
+        <button class="filter-pill px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase whitespace-nowrap" data-category="Bespoke Suits">
+          Bespoke Suits
+        </button>
+        <button class="filter-pill px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase whitespace-nowrap" data-category="Co-ord Sets">
+          Co-ord Sets
+        </button>
+        <button class="filter-pill px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase whitespace-nowrap" data-category="Artisanal Fabrics">
+          Artisanal Fabrics
+        </button>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <!-- Rendered dynamically by app.js from products-data.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. FOUNDER'S ATELIER & PHILOSOPHY
+       ========================================================================= -->
+  <section id="founder" class="py-24 bg-[var(--bg-canvas)]">
+    <div class="max-w-7xl mx-auto px-4 md:px-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Portrait / Studio Shot -->
+        <div class="lg:col-span-5 relative reveal reveal-left">
+          <div class="luxury-image-wrapper rounded-3xl overflow-hidden shadow-xl aspect-[3/4] border border-[var(--border-gold)]">
+            <img src="assets/images/branding/banner_festive_2.png" alt="Aainaa Designs Studio" class="w-full h-full object-cover">
+          </div>
+          <div class="absolute -bottom-6 -right-6 p-6 rounded-2xl bg-white shadow-xl border border-[var(--border-subtle)] max-w-xs hidden sm:block">
+            <p class="font-serif text-lg font-medium text-[var(--text-ink)] leading-snug">Jaleena Shan</p>
+            <p class="text-[11px] uppercase tracking-wider text-[var(--accent-gold-dark)] font-semibold mt-0.5">Founder & Creative Director</p>
+            <p class="text-xs text-[var(--text-muted)] mt-2">Boutique founded in Kakkanad, Kochi, 2014.</p>
+          </div>
+        </div>
+
+        <!-- Right Story & Philosophy -->
+        <div class="lg:col-span-7 space-y-6 lg:pl-6 reveal reveal-right">
+          <span class="text-xs font-semibold uppercase tracking-widest text-[var(--accent-gold-dark)]">The Founder's Note</span>
+          
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[var(--text-ink)] leading-tight">
+            "Aainaa Means Mirror — <br>
+            <span class="italic text-[var(--accent-gold-dark)]">A Reflection of Your Innate Grace."</span>
+          </h2>
+
+          <div class="space-y-4 text-sm text-[var(--text-muted)] leading-relaxed">
+            <p>
+              Growing up, I was inspired by the quiet confidence and effortless poise of Indian women. True style was never loud; it was intentional, tactile, and deeply personal. 
+            </p>
+            <p>
+              I started AAINAA in 2014 from our small boutique in Kakkanad with a singular mission: <strong class="text-[var(--text-ink)]">to make luxury truly affordable</strong>. I was frustrated seeing high-end Indian wear marked up by 500% with synthetic blends. We chose to marry authentic hand-selected natural fabrics with clean, minimalist silhouettes.
+            </p>
+            <blockquote class="pl-4 border-l-2 border-[var(--accent-gold)] text-[var(--text-ink)] font-serif italic text-base sm:text-lg my-4">
+              "We believe it is wrong to label a woman with any label, let alone a size. When you wear AAINAA, you wear an heirloom crafted without shortcuts."
+            </blockquote>
+          </div>
+
+          <div class="pt-4 flex flex-wrap items-center gap-4">
+            <a href="https://wa.me/916282719098?text=Hello%20Jaleena%2C%20I%20read%20your%20story%20and%20would%20love%20to%20know%20more%20about%20your%20atelier." target="_blank" rel="noopener noreferrer" class="px-7 py-3 btn-dark rounded-full text-xs font-semibold uppercase tracking-widest inline-flex items-center gap-2">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+              <span>Connect with Studio</span>
+            </a>
+            <span class="text-xs text-[var(--text-light)]">Studio: Kakkanad, Kochi • aylinstuudio@gmail.com</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       8. BESPOKE MADE-TO-MEASURE CONCIERGE BANNER
+       ========================================================================= -->
+  <section id="bespoke" class="py-16 bg-[var(--text-ink)] text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 md:px-10 relative z-10">
+      <div class="reveal reveal-scale max-w-3xl mx-auto text-center space-y-6">
+        <span class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[var(--accent-gold-light)] text-[11px] font-bold tracking-widest uppercase">
+          Zero Size Stigmas
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light leading-tight">
+          Custom Tailoring & Made-to-Measure
+        </h2>
+        <p class="text-sm text-stone-300 font-light leading-relaxed max-w-xl mx-auto">
+          Need a specific length, custom neckline, or custom chest-to-hip proportions? Send your measurements directly to our master tailors for a bespoke fit at zero extra surcharge.
+        </p>
+        <div class="pt-4">
+          <button onclick="window.openBespokeDialog()" class="px-8 py-3.5 btn-gold rounded-full text-xs font-bold uppercase tracking-widest shadow-xl inline-flex items-center gap-2">
+            <span>Send Measurements on WhatsApp</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       9. MASTER FOOTER
+       ========================================================================= -->
+  <footer class="bg-stone-900 text-stone-300 py-16 border-t border-stone-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 md:px-10 grid grid-cols-1 md:grid-cols-12 gap-10">
+      
+      <!-- Col 1: Brand Info -->
+      <div class="md:col-span-5 space-y-4">
+        <img src="assets/images/branding/logo_transparent.png" alt="AAINAA Designs" class="h-10 w-auto filter invert opacity-90">
+        <p class="text-stone-400 font-light leading-relaxed max-w-sm">
+          AAINAA Designs (Est. 2014) crafts timeless handcrafted Indian silhouettes with sensorially rich natural fabrics. Based in Kakkanad, Kochi, delivering worldwide.
+        </p>
+        <div class="pt-2 text-stone-400">
+          <p class="font-medium text-stone-200">Studio Address:</p>
+          <p>Kakkanad, Kochi, Kerala — 682030, India</p>
+          <p class="mt-1">WhatsApp: <a href="https://wa.me/916282719098" class="text-[var(--accent-gold-light)] hover:underline">+91 6282719098</a></p>
+          <p>Email: <a href="mailto:aylinstuudio@gmail.com" class="text-[var(--accent-gold-light)] hover:underline">aylinstuudio@gmail.com</a></p>
+        </div>
+      </div>
+
+      <!-- Col 2: Categories -->
+      <div class="md:col-span-3 space-y-3">
+        <h4 class="font-serif text-base text-stone-100 uppercase tracking-widest font-semibold">Collections</h4>
+        <ul class="space-y-2 text-stone-400">
+          <li><a href="#catalog" class="hover:text-white transition-colors">Modal Silk Kaftans</a></li>
+          <li><a href="#catalog" class="hover:text-white transition-colors">Mul Chanderi Suits</a></li>
+          <li><a href="#catalog" class="hover:text-white transition-colors">Artisanal Hand-Block Fabrics</a></li>
+          <li><a href="#catalog" class="hover:text-white transition-colors">Festive Co-ord Sets</a></li>
+          <li><a href="#bespoke" class="hover:text-white transition-colors">Custom Tailoring Service</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Customer Care & Direct Social -->
+      <div class="md:col-span-4 space-y-3">
+        <h4 class="font-serif text-base text-stone-100 uppercase tracking-widest font-semibold">Concierge & Orders</h4>
+        <p class="text-stone-400 leading-relaxed">
+          Need styling recommendations or immediate parcel tracking? Our Kochi studio team is live on WhatsApp:
+        </p>
+        <div class="pt-2">
+          <a href="https://wa.me/916282719098?text=Hello%20AAINAA%20Studio%2C%20I%20need%20assistance." target="_blank" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold tracking-wide inline-flex items-center gap-2 transition-colors">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            <span>Live WhatsApp Chat</span>
+          </a>
+        </div>
+        <p class="text-[11px] text-stone-500 pt-2">
+          Instagram: <a href="https://instagram.com/aainaa.in" target="_blank" class="text-stone-300 hover:underline">@aainaa.in</a>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 md:px-10 mt-12 pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between text-[11px] text-stone-500">
+      <p>© 2026 AAINAA Designs. All Rights Reserved. Crafted for Jaleena Shan.</p>
+      <p class="mt-2 sm:mt-0 font-medium text-stone-400">Architecture & D2C Redesign by <span class="text-[var(--accent-gold-light)]">Mobpie Agency</span></p>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       10. CART SLIDE-OUT DRAWER
+       ========================================================================= -->
+  <div id="drawer-backdrop" class="drawer-backdrop fixed inset-0 bg-black/50 z-50 backdrop-blur-sm"></div>
+
+  <div id="cart-drawer" class="cart-drawer fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 flex flex-col justify-between p-6">
+    
+    <!-- Drawer Header -->
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-[var(--border-subtle)]">
+        <div class="flex items-center gap-2">
+          <h3 class="font-serif text-2xl font-medium text-[var(--text-ink)]">Bespoke Bag</h3>
+          <span class="cart-count-badge px-2 py-0.5 rounded-full bg-stone-100 text-[var(--text-ink)] text-xs font-semibold">0</span>
+        </div>
+        <button onclick="window.closeCart()" class="p-1.5 text-stone-400 hover:text-[var(--text-ink)] transition-colors" aria-label="Close Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Free Shipping Bar -->
+      <div class="py-3">
+        <p id="shipping-text" class="text-[11px] text-[var(--text-muted)] font-medium mb-1.5">
+          Add ₹2,500 more for Free Worldwide Express Shipping
+        </p>
+        <div class="w-full h-1.5 bg-stone-100 rounded-full overflow-hidden">
+          <div id="cart-shipping-bar" class="h-full bg-[var(--accent-gold)] transition-all duration-500" style="width: 0%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Items Scroll Container -->
+    <div class="flex-grow overflow-y-auto pr-1 my-2">
+      
+      <!-- Empty State -->
+      <div id="cart-empty-state" class="py-16 text-center">
+        <svg class="w-12 h-12 text-stone-300 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <p class="font-serif text-xl font-medium text-[var(--text-ink)]">Your Bag is Empty</p>
+        <p class="text-xs text-[var(--text-muted)] mt-1 max-w-xs mx-auto">Explore our Kerala artisan archives and add handcrafted silhouettes to your bag.</p>
+        <button onclick="window.closeCart(); document.getElementById('catalog').scrollIntoView({behavior: 'smooth'});" class="mt-5 px-6 py-2.5 btn-outline-gold rounded-full text-xs font-bold uppercase tracking-widest">
+          Explore Silhouettes
+        </button>
+      </div>
+
+      <!-- Item List Container -->
+      <div id="cart-items-container" class="hidden divide-y divide-[var(--border-subtle)]">
+        <!-- Rendered by app.js -->
+      </div>
+
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="pt-4 border-t border-[var(--border-subtle)] space-y-3">
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-[var(--text-muted)]">Subtotal (Taxes included)</span>
+        <span id="cart-subtotal" class="font-bold text-lg text-[var(--text-ink)]">₹0</span>
+      </div>
+
+      <div class="space-y-2">
+        <!-- Proceed to Secure D2C Checkout -->
+        <button onclick="window.openCheckout()" class="w-full py-3.5 btn-dark rounded-xl text-xs font-bold uppercase tracking-widest shadow-md">
+          Proceed to Secure Checkout (UPI / Card)
+        </button>
+
+        <!-- 1-Click WhatsApp Direct Checkout Bridge -->
+        <button onclick="window.checkoutViaWhatsApp()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          <span>Order via WhatsApp VIP</span>
+        </button>
+      </div>
+
+      <p class="text-[10px] text-center text-[var(--text-light)]">
+        Encrypted Checkout • 100% Authentic Handcraft • 7-Day Exchange Support
+      </p>
+    </div>
+
+  </div>
+
+  <!-- =========================================================================
+       10B. WISHLIST SLIDE-OUT DRAWER
+       ========================================================================= -->
+  <div id="wishlist-drawer" class="cart-drawer fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 flex flex-col justify-between p-6 shadow-2xl">
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+        <div class="flex items-center gap-2">
+          <h3 class="font-serif text-2xl font-medium text-[var(--text-ink)]">Saved Wishlist</h3>
+          <span class="wishlist-count-badge px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 text-xs font-semibold">0</span>
+        </div>
+        <button onclick="window.closeWishlist()" class="p-1.5 text-stone-400 hover:text-stone-900">✕</button>
+      </div>
+    </div>
+
+    <div class="flex-grow overflow-y-auto pr-1 my-2">
+      <div id="wishlist-empty-state" class="py-16 text-center">
+        <p class="font-serif text-xl font-medium text-stone-800">Your Wishlist is Empty</p>
+        <p class="text-xs text-stone-500 mt-1">Tap the heart on any piece to save it for later.</p>
+      </div>
+      <div id="wishlist-items-container" class="hidden divide-y divide-stone-100"></div>
+    </div>
+
+    <div class="pt-4 border-t border-stone-200">
+      <button onclick="window.closeWishlist();" class="w-full py-3 btn-outline-gold rounded-xl text-xs font-bold uppercase tracking-wider">
+        Continue Browsing
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       11. QUICK VIEW MODAL
+       ========================================================================= -->
+  <div id="quick-view-modal" class="modal-wrapper fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative bg-white rounded-3xl max-w-3xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto shadow-2xl border border-[var(--border-subtle)]">
+      <button onclick="window.closeQuickView()" class="absolute top-5 right-5 p-2 text-stone-400 hover:text-stone-900 rounded-full transition-colors z-10" aria-label="Close Preview">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div id="quick-view-content">
+        <!-- Rendered by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       11B. INTERACTIVE D2C CHECKOUT & PAYMENT GATEWAY MODAL
+       ========================================================================= -->
+  <div id="checkout-modal" class="modal-wrapper fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"></div>
+
+  <!-- =========================================================================
+       12. MOBILE NAVIGATION DRAWER
+       ========================================================================= -->
+  <div id="mobile-menu-drawer" class="drawer-left fixed top-0 left-0 h-full w-4/5 max-w-sm bg-white z-50 flex flex-col justify-between p-6 shadow-2xl lg:hidden">
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+        <img src="assets/images/branding/logo_transparent.png" alt="AAINAA" class="h-8 w-auto">
+        <button onclick="window.closeMobileMenu()" class="p-2 text-stone-400 hover:text-stone-900 cursor-pointer transition-colors" aria-label="Close Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <nav class="py-6 space-y-4 font-serif text-lg text-[var(--text-ink)]">
+        <a href="#catalog" onclick="window.closeMobileMenu()" class="block hover:text-[var(--accent-gold-dark)]">The Full Atelier</a>
+        <a href="#collections" onclick="window.closeMobileMenu()" class="block hover:text-[var(--accent-gold-dark)]">Featured Silhouettes</a>
+        <a href="#bespoke" onclick="window.closeMobileMenu()" class="block hover:text-[var(--accent-gold-dark)]">Made-to-Measure</a>
+        <a href="#founder" onclick="window.closeMobileMenu()" class="block hover:text-[var(--accent-gold-dark)]">Founder's Story</a>
+      </nav>
+    </div>
+
+    <div class="pt-6 border-t border-stone-200 space-y-3">
+      <a href="https://wa.me/916282719098" target="_blank" class="w-full py-3 bg-emerald-600 text-white rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2">
+        <span>Chat on WhatsApp</span>
+      </a>
+      <p class="text-[11px] text-center text-stone-400">Kakkanad, Kochi, Kerala</p>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       13. FLOATING WHATSAPP VIP BUTTON
+       ========================================================================= -->
+  <a href="https://wa.me/916282719098?text=Hello%20AAINAA%20Designs%2C%20I%20am%20browsing%20your%20luxury%20collection." target="_blank" rel="noopener noreferrer" class="whatsapp-float fixed bottom-6 right-6 z-40 w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-xl transition-all" aria-label="WhatsApp Studio VIP Concierge">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+  </a>
+
+  <!-- =========================================================================
+       14. TOAST NOTIFICATIONS CONTAINER
+       ========================================================================= -->
+  <div id="toast-container" class="fixed bottom-6 left-6 z-50 flex flex-col gap-2"></div>
+
+  <!-- Scripts -->
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
