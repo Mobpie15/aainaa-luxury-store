@@ -1,0 +1,457 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   AAINAA DESIGNS — BESPOKE LUXURY STYLESHEET
+   The Luxury of Simplicity • Kakkanad, Kochi
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-canvas: #fbfaf8;
+  --bg-card: #f6f4ef;
+  --bg-surface: #ffffff;
+  --text-ink: #141716;
+  --text-muted: #6b6660;
+  --text-light: #948f88;
+  --accent-gold: #c5a059;
+  --accent-gold-light: #ebd9ab;
+  --accent-gold-dark: #a07d3b;
+  --border-subtle: rgba(20, 23, 22, 0.08);
+  --border-medium: rgba(20, 23, 22, 0.16);
+  --border-gold: rgba(197, 160, 89, 0.35);
+  --shadow-soft: 0 10px 30px -10px rgba(20, 23, 22, 0.06);
+  --shadow-hover: 0 20px 40px -15px rgba(20, 23, 22, 0.12);
+  --shadow-drawer: -10px 0 50px rgba(20, 23, 22, 0.25);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* Base Setup */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-canvas);
+  color: var(--text-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+/* Prevent horizontal scroll bleed on mobile */
+html, body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+::selection {
+  background-color: var(--accent-gold-light);
+  color: var(--text-ink);
+}
+
+/* Typography Utility */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Marquee Infinite Ticker */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  min-width: 100%;
+  animation: marqueeScroll 26s linear infinite;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+/* Luxury Card Image Reveal */
+.luxury-image-wrapper {
+  overflow: hidden;
+  position: relative;
+  background-color: #ebe7de;
+}
+
+.luxury-image-wrapper img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-card:hover .luxury-image-wrapper img {
+  transform: scale(1.06);
+}
+
+/* Hero Festive Image Position - Center the model properly */
+.hero-model-img {
+  object-position: 82% 20%;
+}
+
+@media (min-width: 1024px) {
+  .hero-model-img {
+    object-position: 70% 30%;
+  }
+}
+
+/* CTA Buttons */
+.btn-gold {
+  background: linear-gradient(135deg, #c5a059 0%, #b89146 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, #b89146 0%, #99742e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px -8px rgba(197, 160, 89, 0.45);
+}
+
+.btn-dark {
+  background: #141716;
+  color: #ffffff;
+  transition: var(--transition-smooth);
+}
+
+.btn-dark:hover {
+  background: #252b29;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px -8px rgba(20, 23, 22, 0.25);
+}
+
+.btn-outline-gold {
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold-dark);
+  background: transparent;
+  transition: var(--transition-smooth);
+}
+
+.btn-outline-gold:hover {
+  background: var(--accent-gold);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Navigation */
+.nav-glass {
+  background: rgba(251, 250, 248, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: var(--transition-smooth);
+}
+
+.nav-glass.scrolled {
+  background: rgba(251, 250, 248, 0.98);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   DRAWERS & MODALS — BULLETPROOF MOBILE BEHAVIOR
+   ========================================================================== */
+
+.drawer-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.drawer-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Right Cart/Wishlist Drawer */
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 28rem;
+  background-color: #ffffff;
+  z-index: 60;
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+  box-shadow: var(--shadow-drawer);
+}
+
+.cart-drawer.open {
+  transform: translateX(0%);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Left Mobile Navigation Drawer */
+.drawer-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 85%;
+  max-width: 22rem;
+  background-color: #ffffff;
+  z-index: 60;
+  transform: translateX(-100%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+  box-shadow: 10px 0 50px rgba(20, 23, 22, 0.25);
+}
+
+.drawer-left.open {
+  transform: translateX(0%);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Modals */
+.modal-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.97);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-wrapper.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* Filter Tag Pills */
+.filter-pill {
+  transition: var(--transition-fast);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--text-muted);
+}
+
+.filter-pill.active {
+  background: var(--text-ink);
+  color: #ffffff;
+  border-color: var(--text-ink);
+}
+
+.filter-pill:hover:not(.active) {
+  border-color: var(--accent-gold);
+  color: var(--text-ink);
+}
+
+/* Floating WhatsApp VIP Button */
+.whatsapp-float {
+  box-shadow: 0 8px 24px -4px rgba(37, 211, 102, 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 12px 28px -4px rgba(37, 211, 102, 0.6);
+}
+
+/* Toast Notifications */
+#toast-container {
+  pointer-events: none;
+}
+
+.luxury-toast {
+  pointer-events: auto;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ==========================================================================
+   SAFE REVEAL ANIMATIONS (NO BLANK OPACITY: 0 TRAP)
+   ========================================================================== */
+
+/* Elements are VISIBLE by default to guarantee 0 blank screens */
+.reveal, .reveal-scale, .reveal-left, .reveal-right {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Progressive enhancement: when JS observer initializes, it adds js-observer-ready to body */
+body.js-ready .reveal:not(.visible) {
+  opacity: 0.05;
+  transform: translateY(24px);
+}
+
+body.js-ready .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.js-ready .reveal-scale:not(.visible) {
+  opacity: 0.05;
+  transform: scale(0.95) translateY(16px);
+}
+
+body.js-ready .reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Hero Subtle Load Animation */
+@keyframes softHeroFade {
+  0% { opacity: 0.4; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.hero-anim-title {
+  animation: softHeroFade 0.6s ease-out forwards;
+}
+
+.hero-anim-desc {
+  animation: softHeroFade 0.7s ease-out 0.1s forwards;
+}
+
+.hero-anim-cta {
+  animation: softHeroFade 0.7s ease-out 0.2s forwards;
+}
+
+/* Card Hover Physics */
+.luxury-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+}
+
+.luxury-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 35px -8px rgba(20, 23, 22, 0.1);
+  border-color: rgba(197, 160, 89, 0.5);
+}
+
+/* Wishlist Heart */
+.wishlist-btn {
+  transition: all 0.25s ease;
+}
+
+.wishlist-btn:hover {
+  transform: scale(1.12);
+}
+
+.wishlist-btn.active svg {
+  fill: #e11d48;
+  stroke: #e11d48;
+}
+
+/* Product Gallery */
+.thumb-btn {
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.thumb-btn.active {
+  border-color: var(--accent-gold);
+  transform: scale(0.96);
+}
+
+/* Accordion */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+}
+
+.accordion-item.open .accordion-content {
+  max-height: 1200px;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.accordion-item.open .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-icon {
+  transition: transform 0.25s ease;
+}
+
+/* Mobile Sticky Bottom Bar */
+.sticky-mobile-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border-subtle);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+}
+
+@media (min-width: 1024px) {
+  .sticky-mobile-bar {
+    display: none !important;
+  }
+}
+
+/* Payment Mode Tabs */
+.payment-card-tab {
+  transition: all 0.2s ease;
+  border: 1.5px solid var(--border-subtle);
+  cursor: pointer;
+}
+
+.payment-card-tab.active {
+  border-color: var(--text-ink);
+  background-color: #faf9f6;
+}
+
+/* Size Guide Table */
+.size-table th, .size-table td {
+  padding: 8px 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.size-table th {
+  background-color: #f7f6f2;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

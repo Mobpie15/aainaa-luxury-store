@@ -36,15 +36,25 @@
   const searchInput = document.getElementById('search-input');
   const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
 
-  // --- Initialization ---
-  document.addEventListener('DOMContentLoaded', () => {
-    initNavigationScroll();
-    renderProducts();
-    updateCartUI();
-    updateWishlistUI();
-    setupEventListeners();
-    initScrollObserver();
-  });
+  // --- Robust Mobile-Safe Initialization ---
+  function initApp() {
+    try {
+      initNavigationScroll();
+      renderProducts();
+      updateCartUI();
+      updateWishlistUI();
+      setupEventListeners();
+      initScrollObserver();
+    } catch (err) {
+      console.error('AAINAA App Init Error:', err);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+  } else {
+    initApp();
+  }
 
   // --- Format Currency (INR) ---
   function formatINR(amount) {
@@ -57,24 +67,8 @@
   // --- Scroll & Reveal Observer ---
   function initScrollObserver() {
     const reveals = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.08,
-      rootMargin: '0px 0px -30px 0px'
-    });
-
-    reveals.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 20) {
-        el.classList.add('visible');
-      }
-      observer.observe(el);
-    });
+    reveals.forEach(el => el.classList.add('visible'));
+    document.body.classList.add('js-ready');
   }
 
   // --- Scroll Effects ---

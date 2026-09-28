@@ -6,10 +6,7 @@
   <title>Bespoke Silhouette — AAINAA Designs</title>
   <meta name="description" content="Detailed craftsmanship, textile provenance, and bespoke sizing for handcrafted silhouettes by AAINAA Designs, Kakkanad, Kochi.">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Custom Luxury Stylesheet -->
+  <!-- Pre-compiled Standalone Luxury Stylesheet (No CDN dependencies) -->
   <link rel="stylesheet" href="assets/css/luxury-custom.css">
   <link rel="icon" type="image/png" href="assets/images/branding/logo_transparent.png">
 </head>
@@ -524,7 +521,7 @@
     let selectedSize = 'Standard';
     let productQty = 1;
 
-    document.addEventListener('DOMContentLoaded', () => {
+    function initProductPage() {
       const params = new URLSearchParams(window.location.search);
       const id = parseInt(params.get('id')) || (window.AAINAA_PRODUCTS[0] && window.AAINAA_PRODUCTS[0].id);
       currentProduct = (window.AAINAA_PRODUCTS || []).find(p => p.id === id) || window.AAINAA_PRODUCTS[0];
@@ -587,7 +584,13 @@
 
       // Render Related Products
       renderRelatedProducts();
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initProductPage);
+    } else {
+      initProductPage();
+    }
 
     window.selectPageSize = function (btn, size) {
       selectedSize = size;
