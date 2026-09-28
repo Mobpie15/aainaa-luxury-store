@@ -44,9 +44,10 @@
       updateCartUI();
       updateWishlistUI();
       setupEventListeners();
-      initScrollObserver();
     } catch (err) {
       console.error('AAINAA App Init Error:', err);
+    } finally {
+      initScrollObserver();
     }
   }
 
@@ -82,21 +83,21 @@
         }
       });
     }, {
-      threshold: 0.02,
-      rootMargin: '0px 0px -20px 0px'
+      threshold: 0.01,
+      rootMargin: '80px 0px 80px 0px'
     });
 
     items.forEach((el, index) => {
       if (el.classList.contains('appeared') || el.classList.contains('visible')) return;
 
       const rect = el.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight - 20 && rect.bottom > 0;
+      const inView = rect.top < window.innerHeight && rect.bottom > 0;
 
       if (inView) {
         // In viewport on page load: trigger smooth staggered entrance
         setTimeout(() => {
           el.classList.add('appeared', 'visible');
-        }, 80 + (index % 4) * 80);
+        }, 60 + (index % 4) * 60);
       } else {
         // Below fold: observe as user scrolls
         observer.observe(el);
@@ -107,14 +108,14 @@
     if (!window._scrollFallbackBound) {
       window._scrollFallbackBound = true;
       let ticking = false;
-      window.addEventListener('scroll', () => {
+      const checkPending = () => {
         if (!ticking) {
           requestAnimationFrame(() => {
             const pending = document.querySelectorAll('.appear-on-scroll:not(.appeared), .appear-scale:not(.appeared), .appear-left:not(.appeared), .appear-right:not(.appeared)');
             const vh = window.innerHeight;
             pending.forEach(el => {
               const r = el.getBoundingClientRect();
-              if (r.top < vh - 20 && r.bottom > 0) {
+              if (r.top < vh + 100) {
                 el.classList.add('appeared', 'visible');
               }
             });
@@ -122,7 +123,9 @@
           });
           ticking = true;
         }
-      }, { passive: true });
+      };
+      window.addEventListener('scroll', checkPending, { passive: true });
+      window.addEventListener('touchmove', checkPending, { passive: true });
     }
   }
 
@@ -183,6 +186,7 @@
 
       const isMobile = window.innerWidth < 768;
       const staggerDelay = isMobile ? (idx % 2) * 110 : (idx % 4) * 80;
+      const isWishlisted = wishlist.includes(product.id);
 
       return `
         <div class="luxury-card appear-on-scroll group bg-[var(--bg-surface)] rounded-2xl overflow-hidden border border-[var(--border-subtle)] hover:border-[var(--border-gold)] transition-all flex flex-col justify-between" style="transition-delay: ${staggerDelay}ms;">
