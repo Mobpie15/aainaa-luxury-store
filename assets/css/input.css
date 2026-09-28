@@ -348,7 +348,7 @@ html, body {
 @keyframes luxFadeUp {
   0% {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(32px);
   }
   100% {
     opacity: 1;
@@ -359,44 +359,90 @@ html, body {
 @keyframes luxScaleIn {
   0% {
     opacity: 0;
-    transform: scale(0.94);
+    transform: scale(0.92) translateY(16px);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0);
   }
+}
+
+@keyframes luxSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes luxHeaderIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes luxBottomBarIn {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Header & Announcement Load Animations */
+.anim-slide-down {
+  animation: luxSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim-header-in {
+  animation: luxHeaderIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+.mobile-strip-anim {
+  animation: luxFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
 }
 
 /* Hero Staggered Load Animations */
 .hero-anim-badge {
-  animation: luxFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+  animation: luxFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
 }
 
 .hero-anim-title {
-  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
 }
 
 .hero-anim-desc {
-  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
 }
 
 .hero-anim-cta {
-  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both;
 }
 
 .hero-anim-stats {
-  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.48s both;
 }
 
 .hero-img-anim {
-  animation: luxScaleIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+  animation: luxScaleIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
 }
 
-/* Scroll-triggered Appear Elements */
+/* Scroll-triggered Appear Elements (Luxury Silk Transition) */
 .appear-on-scroll {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(32px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -407,21 +453,47 @@ html, body {
 
 .appear-scale {
   opacity: 0;
-  transform: scale(0.94);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(0.93) translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .appear-scale.appeared {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) translateY(0);
+}
+
+.appear-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.appear-left.appeared {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.appear-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.appear-right.appeared {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* Stagger Helpers */
-.stagger-1 { transition-delay: 80ms !important; }
-.stagger-2 { transition-delay: 160ms !important; }
-.stagger-3 { transition-delay: 240ms !important; }
-.stagger-4 { transition-delay: 320ms !important; }
+.stagger-1 { transition-delay: 60ms !important; }
+.stagger-2 { transition-delay: 130ms !important; }
+.stagger-3 { transition-delay: 200ms !important; }
+.stagger-4 { transition-delay: 270ms !important; }
+.stagger-5 { transition-delay: 340ms !important; }
+.stagger-6 { transition-delay: 410ms !important; }
 
 /* Product Card Physics */
 .luxury-card {
@@ -480,6 +552,7 @@ html, body {
   -webkit-backdrop-filter: blur(14px);
   border-top: 1px solid var(--border-subtle);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  animation: luxBottomBarIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
 }
 
 @media (min-width: 1024px) {

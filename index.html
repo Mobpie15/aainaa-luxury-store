@@ -16,7 +16,7 @@
   <!-- =========================================================================
        1. LUXURY ANNOUNCEMENT MARQUEE
        ========================================================================= -->
-  <div class="bg-[var(--text-ink)] text-white py-2.5 text-[11px] tracking-widest uppercase font-medium border-b border-[var(--border-subtle)] overflow-hidden">
+  <div class="anim-slide-down bg-[var(--text-ink)] text-white py-2.5 text-[11px] tracking-widest uppercase font-medium border-b border-[var(--border-subtle)] overflow-hidden">
     <div class="marquee-container">
       <div class="marquee-content gap-12">
         <span class="flex items-center gap-2"><span>✦</span> 100% Authentic Handcrafted Indian Fabrics</span>
@@ -38,7 +38,7 @@
   <!-- =========================================================================
        2. GLASSMORPHISM NAVIGATION
        ========================================================================= -->
-  <header id="main-nav" class="nav-glass sticky top-0 z-40 px-4 md:px-10 py-3.5 transition-all duration-300">
+  <header id="main-nav" class="nav-glass anim-header-in sticky top-0 z-40 px-4 md:px-10 py-3.5 transition-all duration-300">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       
       <!-- Mobile Menu Button -->
@@ -91,7 +91,7 @@
   <!-- =========================================================================
        2B. MOBILE QUICK CATEGORY HORIZONTAL STRIP (Shop with 1 tap)
        ========================================================================= -->
-  <div class="lg:hidden bg-[var(--bg-canvas)] border-b border-[var(--border-subtle)] py-2.5 px-3 overflow-x-auto no-scrollbar whitespace-nowrap sticky top-[53px] z-30 shadow-xs backdrop-blur-md bg-white/95">
+  <div class="mobile-strip-anim lg:hidden bg-[var(--bg-canvas)] border-b border-[var(--border-subtle)] py-2.5 px-3 overflow-x-auto no-scrollbar whitespace-nowrap sticky top-[53px] z-30 shadow-xs backdrop-blur-md bg-white/95">
     <div class="flex items-center gap-2 text-xs">
       <button onclick="window.filterByCategory('All')" class="px-3.5 py-1.5 rounded-full bg-stone-900 text-white font-medium text-[11px] uppercase tracking-wider flex items-center gap-1 shadow-xs transition-transform active:scale-95">
         <span>✦</span>
@@ -457,7 +457,7 @@
     <div class="max-w-7xl mx-auto px-4 md:px-10 grid grid-cols-1 md:grid-cols-12 gap-10">
       
       <!-- Col 1: Brand Info -->
-      <div class="md:col-span-5 space-y-4">
+      <div class="md:col-span-5 space-y-4 appear-on-scroll stagger-1">
         <img src="assets/images/branding/logo_transparent.png" alt="AAINAA Designs" class="h-10 w-auto filter invert opacity-90">
         <p class="text-stone-400 font-light leading-relaxed max-w-sm">
           AAINAA Designs (Est. 2014) crafts timeless handcrafted Indian silhouettes with sensorially rich natural fabrics. Based in Kakkanad, Kochi, delivering worldwide.
@@ -471,7 +471,7 @@
       </div>
 
       <!-- Col 2: Categories -->
-      <div class="md:col-span-3 space-y-3">
+      <div class="md:col-span-3 space-y-3 appear-on-scroll stagger-2">
         <h4 class="font-serif text-base text-stone-100 uppercase tracking-widest font-semibold">Collections</h4>
         <ul class="space-y-2 text-stone-400">
           <li><a href="#catalog" class="hover:text-white transition-colors">Modal Silk Kaftans</a></li>
@@ -483,7 +483,7 @@
       </div>
 
       <!-- Col 3: Customer Care & Direct Social -->
-      <div class="md:col-span-4 space-y-3">
+      <div class="md:col-span-4 space-y-3 appear-on-scroll stagger-3">
         <h4 class="font-serif text-base text-stone-100 uppercase tracking-widest font-semibold">Concierge & Orders</h4>
         <p class="text-stone-400 leading-relaxed">
           Need styling recommendations or immediate parcel tracking? Our Kochi studio team is live on WhatsApp:

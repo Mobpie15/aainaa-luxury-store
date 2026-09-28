@@ -64,9 +64,9 @@
   }
   window.formatINR = formatINR;
 
-  // --- Silk-Smooth Scroll & Reveal Observer ---
+  // --- Silk-Smooth Mobile & Desktop Scroll & Reveal Observer ---
   function initScrollObserver() {
-    const items = document.querySelectorAll('.appear-on-scroll, .appear-scale, .reveal, .reveal-scale, .reveal-left, .reveal-right');
+    const items = document.querySelectorAll('.appear-on-scroll, .appear-scale, .appear-left, .appear-right, .reveal, .reveal-scale, .reveal-left, .reveal-right');
     if (!items.length) return;
 
     if (!('IntersectionObserver' in window)) {
@@ -82,22 +82,48 @@
         }
       });
     }, {
-      threshold: 0.04,
-      rootMargin: '0px 0px -15px 0px'
+      threshold: 0.02,
+      rootMargin: '0px 0px -20px 0px'
     });
 
-    items.forEach(el => {
+    items.forEach((el, index) => {
+      if (el.classList.contains('appeared') || el.classList.contains('visible')) return;
+
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight + 60) {
-        el.classList.add('appeared', 'visible');
+      const inView = rect.top < window.innerHeight - 20 && rect.bottom > 0;
+
+      if (inView) {
+        // In viewport on page load: trigger smooth staggered entrance
+        setTimeout(() => {
+          el.classList.add('appeared', 'visible');
+        }, 80 + (index % 4) * 80);
       } else {
+        // Below fold: observe as user scrolls
         observer.observe(el);
       }
     });
 
-    setTimeout(() => {
-      items.forEach(el => el.classList.add('appeared', 'visible'));
-    }, 1000);
+    // Mobile scroll fallback: checks unrevealed elements only as user actually scrolls
+    if (!window._scrollFallbackBound) {
+      window._scrollFallbackBound = true;
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const pending = document.querySelectorAll('.appear-on-scroll:not(.appeared), .appear-scale:not(.appeared), .appear-left:not(.appeared), .appear-right:not(.appeared)');
+            const vh = window.innerHeight;
+            pending.forEach(el => {
+              const r = el.getBoundingClientRect();
+              if (r.top < vh - 20 && r.bottom > 0) {
+                el.classList.add('appeared', 'visible');
+              }
+            });
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    }
   }
 
   // --- Scroll Effects ---
@@ -155,10 +181,11 @@
         ? `<span class="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold rounded-full badge-gold shadow-sm">${product.badge}</span>`
         : '';
 
-      const isWishlisted = wishlist.includes(product.id);
+      const isMobile = window.innerWidth < 768;
+      const staggerDelay = isMobile ? (idx % 2) * 110 : (idx % 4) * 80;
 
       return `
-        <div class="luxury-card appear-on-scroll group bg-[var(--bg-surface)] rounded-2xl overflow-hidden border border-[var(--border-subtle)] hover:border-[var(--border-gold)] transition-all flex flex-col justify-between" style="transition-delay: ${(idx % 6) * 70}ms;">
+        <div class="luxury-card appear-on-scroll group bg-[var(--bg-surface)] rounded-2xl overflow-hidden border border-[var(--border-subtle)] hover:border-[var(--border-gold)] transition-all flex flex-col justify-between" style="transition-delay: ${staggerDelay}ms;">
           <div>
             <div class="luxury-image-wrapper relative aspect-[3/4] w-full cursor-pointer">
               ${badgeHtml}
