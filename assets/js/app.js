@@ -64,11 +64,40 @@
   }
   window.formatINR = formatINR;
 
-  // --- Scroll & Reveal Observer ---
+  // --- Silk-Smooth Scroll & Reveal Observer ---
   function initScrollObserver() {
-    const reveals = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right');
-    reveals.forEach(el => el.classList.add('visible'));
-    document.body.classList.add('js-ready');
+    const items = document.querySelectorAll('.appear-on-scroll, .appear-scale, .reveal, .reveal-scale, .reveal-left, .reveal-right');
+    if (!items.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(el => el.classList.add('appeared', 'visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appeared', 'visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.04,
+      rootMargin: '0px 0px -15px 0px'
+    });
+
+    items.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight + 60) {
+        el.classList.add('appeared', 'visible');
+      } else {
+        observer.observe(el);
+      }
+    });
+
+    setTimeout(() => {
+      items.forEach(el => el.classList.add('appeared', 'visible'));
+    }, 1000);
   }
 
   // --- Scroll Effects ---
@@ -119,68 +148,50 @@
 
     productsGrid.innerHTML = items.map((product, idx) => {
       const originalPriceHtml = product.originalPrice
-        ? `<span class="text-xs text-[var(--text-light)] line-through ml-2">${formatINR(product.originalPrice)}</span>`
+        ? `<span class="text-[10px] sm:text-xs text-stone-400 line-through ml-1.5">${formatINR(product.originalPrice)}</span>`
         : '';
 
       const badgeHtml = product.badge
-        ? `<span class="absolute top-3 left-3 z-10 px-2.5 py-1 text-[10px] uppercase tracking-wider font-semibold rounded-full badge-gold">${product.badge}</span>`
+        ? `<span class="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 text-[9px] sm:text-[10px] uppercase tracking-wider font-semibold rounded-full badge-gold shadow-sm">${product.badge}</span>`
         : '';
 
       const isWishlisted = wishlist.includes(product.id);
 
       return `
-        <div class="luxury-card reveal group bg-[var(--bg-surface)] rounded-2xl overflow-hidden border border-[var(--border-subtle)] hover:border-[var(--border-gold)] transition-all duration-500 flex flex-col" style="transition-delay: ${(idx % 4) * 110}ms;">
-          <div class="luxury-image-wrapper relative aspect-[3/4] w-full cursor-pointer">
-            ${badgeHtml}
-            
-            <!-- Wishlist Heart Button -->
-            <button onclick="event.stopPropagation(); window.toggleWishlist(${product.id})" class="wishlist-btn absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm border border-stone-200 flex items-center justify-center text-stone-400 hover:text-rose-600 transition-all ${isWishlisted ? 'active text-rose-600' : ''}" title="${isWishlisted ? 'Remove from Wishlist' : 'Save to Wishlist'}">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
+        <div class="luxury-card appear-on-scroll group bg-[var(--bg-surface)] rounded-2xl overflow-hidden border border-[var(--border-subtle)] hover:border-[var(--border-gold)] transition-all flex flex-col justify-between" style="transition-delay: ${(idx % 6) * 70}ms;">
+          <div>
+            <div class="luxury-image-wrapper relative aspect-[3/4] w-full cursor-pointer">
+              ${badgeHtml}
+              
+              <!-- Wishlist Heart Button -->
+              <button onclick="event.stopPropagation(); window.toggleWishlist(${product.id})" class="wishlist-btn absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm border border-stone-200 flex items-center justify-center text-stone-400 hover:text-rose-600 transition-all ${isWishlisted ? 'active text-rose-600' : ''}" title="${isWishlisted ? 'Remove from Wishlist' : 'Save to Wishlist'}">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
 
-            <!-- Click Image opens full Product Details Page -->
-            <a href="product.html?id=${product.id}" class="block w-full h-full">
-              <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover object-top" loading="lazy">
-            </a>
-
-            <!-- Quick View Hover Bar -->
-            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 pointer-events-none">
-              <div class="w-full flex gap-2 pointer-events-auto">
-                <button onclick="event.stopPropagation(); window.openQuickView(${product.id})" class="flex-1 py-2 bg-white/95 hover:bg-white text-[var(--text-ink)] text-[11px] font-semibold tracking-wider uppercase rounded-xl shadow-lg backdrop-blur-sm transition-transform duration-300 transform translate-y-2 group-hover:translate-y-0">
-                  Quick View
-                </button>
-                <a href="product.html?id=${product.id}" class="px-3.5 py-2 btn-dark rounded-xl text-[11px] font-semibold uppercase tracking-wider flex items-center justify-center shadow-lg transition-transform duration-300 transform translate-y-2 group-hover:translate-y-0" title="Full Product Page">
-                  →
-                </a>
-              </div>
+              <!-- Image routes to Product Details -->
+              <a href="product.html?id=${product.id}" class="block w-full h-full">
+                <img src="${product.image}" alt="${product.title}" class="w-full h-full object-cover object-top" loading="lazy">
+              </a>
             </div>
-          </div>
 
-          <div class="p-5 flex flex-col flex-grow justify-between">
-            <div>
-              <div class="flex items-center justify-between text-[11px] text-[var(--accent-gold-dark)] uppercase tracking-widest font-medium mb-1.5">
-                <span>${product.fabric}</span>
-                <span>•</span>
-                <span>${product.craft}</span>
-              </div>
-              <h3 class="font-serif text-lg font-medium text-[var(--text-ink)] leading-snug line-clamp-2 hover:text-[var(--accent-gold-dark)] cursor-pointer transition-colors">
+            <div class="p-3 sm:p-4 pb-1">
+              <span class="text-[9px] sm:text-[10px] text-[var(--accent-gold-dark)] uppercase tracking-wider font-semibold block truncate">${product.fabric} • ${product.craft}</span>
+              <h3 class="font-serif text-xs sm:text-sm md:text-base font-medium text-stone-900 leading-snug line-clamp-2 hover:text-[var(--accent-gold-dark)] cursor-pointer mt-0.5">
                 <a href="product.html?id=${product.id}">${product.title}</a>
               </h3>
             </div>
+          </div>
 
-            <div class="mt-4 pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between">
-              <div>
-                <span class="text-xs text-[var(--text-muted)] block">Price</span>
-                <div class="flex items-baseline">
-                  <span class="text-base font-semibold text-[var(--text-ink)]">${formatINR(product.price)}</span>
-                  ${originalPriceHtml}
-                </div>
-              </div>
-              <button onclick="window.quickAddToCart(${product.id})" class="px-4 py-2 btn-dark rounded-lg text-xs font-medium tracking-wide flex items-center gap-1.5" title="Add to Bag">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                <span>Bag</span>
-              </button>
+          <div class="p-3 sm:p-4 pt-2 border-t border-stone-100 flex items-center justify-between gap-1">
+            <div class="min-w-0">
+              <span class="text-xs sm:text-sm font-bold text-stone-900 block truncate">${formatINR(product.price)}</span>
+              ${originalPriceHtml}
             </div>
+
+            <!-- 1-Tap Mobile Shopping Quick-Add Sheet Button -->
+            <button onclick="event.stopPropagation(); window.openQuickAddSheet(${product.id})" class="px-2.5 sm:px-3 py-1.5 bg-stone-900 hover:bg-stone-800 text-white rounded-lg text-[10px] sm:text-xs font-semibold uppercase tracking-wider flex items-center gap-1 shadow-sm transition-transform active:scale-95" title="Quick Add">
+              <span>+ Add</span>
+            </button>
           </div>
         </div>
       `;
@@ -188,6 +199,134 @@
 
     setTimeout(initScrollObserver, 40);
   }
+
+  // --- Quick-Add Bottom Sheet System ---
+  const quickAddSheet = document.getElementById('quick-add-sheet');
+
+  window.openQuickAddSheet = function (productId) {
+    const product = (window.AAINAA_PRODUCTS || []).find(p => p.id === productId);
+    if (!product) return;
+
+    const sheet = document.getElementById('quick-add-sheet');
+    const backdrop = document.getElementById('drawer-backdrop');
+    if (!sheet || !backdrop) return;
+
+    let selectedSize = product.sizes && product.sizes.length ? product.sizes[0] : 'Standard';
+    window.currentSheetProduct = product;
+    window.currentSheetSize = selectedSize;
+    window.currentSheetQty = 1;
+
+    sheet.innerHTML = `
+      <div class="p-5 sm:p-6 max-w-lg mx-auto">
+        <div class="w-12 h-1 bg-stone-300 rounded-full mx-auto mb-4 lg:hidden"></div>
+
+        <div class="flex items-start justify-between pb-4 border-b border-stone-100">
+          <div class="flex items-center gap-3">
+            <a href="product.html?id=${product.id}">
+              <img src="${product.image}" alt="${product.title}" class="w-14 h-18 object-cover rounded-xl bg-stone-100 flex-shrink-0">
+            </a>
+            <div class="min-w-0">
+              <span class="text-[10px] text-[var(--accent-gold-dark)] uppercase tracking-wider font-semibold block truncate">${product.fabric} • ${product.craft}</span>
+              <h3 class="font-serif text-sm sm:text-base font-medium text-stone-900 leading-snug line-clamp-2">
+                <a href="product.html?id=${product.id}">${product.title}</a>
+              </h3>
+              <p class="text-sm font-bold text-stone-900 mt-1">${formatINR(product.price)}</p>
+            </div>
+          </div>
+          <button onclick="window.closeQuickAddSheet()" class="p-1.5 text-stone-400 hover:text-stone-900 text-sm">✕</button>
+        </div>
+
+        <!-- Size Selector -->
+        <div class="py-4">
+          <div class="flex items-center justify-between mb-2">
+            <label class="text-[11px] font-semibold uppercase tracking-wider text-stone-700">Select Size</label>
+            <a href="product.html?id=${product.id}" class="text-[10px] text-[var(--accent-gold-dark)] font-semibold uppercase hover:underline">Size Guide & Specs →</a>
+          </div>
+          <div class="flex flex-wrap gap-2" id="sheet-sizes-row">
+            ${product.sizes.map((s, idx) => `
+              <button type="button" onclick="window.selectSheetSize(this, '${s}')" class="sheet-size-pill px-3 py-1.5 rounded-xl text-xs font-semibold border ${idx === 0 ? 'border-stone-900 bg-stone-900 text-white' : 'border-stone-200 text-stone-700 hover:border-stone-400'} transition-all">
+                ${s}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Quantity Stepper -->
+        <div class="flex items-center justify-between py-2 border-t border-stone-100 mb-4 text-xs">
+          <span class="font-semibold uppercase tracking-wider text-stone-700">Quantity</span>
+          <div class="flex items-center border border-stone-200 rounded-lg overflow-hidden">
+            <button onclick="window.adjustSheetQty(-1)" class="w-8 h-8 flex items-center justify-center font-bold hover:bg-stone-100 transition-colors">-</button>
+            <span id="sheet-qty-val" class="w-10 text-center font-bold text-stone-900">1</span>
+            <button onclick="window.adjustSheetQty(1)" class="w-8 h-8 flex items-center justify-center font-bold hover:bg-stone-100 transition-colors">+</button>
+          </div>
+        </div>
+
+        <!-- Primary Action CTAs -->
+        <div class="space-y-2 pt-1">
+          <button onclick="window.confirmSheetAddToBag(${product.id})" class="w-full py-3.5 btn-gold rounded-xl text-xs font-bold uppercase tracking-widest shadow-md flex items-center justify-center gap-2">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span>Add to Bag</span>
+          </button>
+
+          <button onclick="window.confirmSheetBuyNow(${product.id})" class="w-full py-3 btn-dark rounded-xl text-xs font-bold uppercase tracking-widest shadow-md flex items-center justify-center gap-2">
+            <span>Instant Checkout (UPI / Cards)</span>
+          </button>
+
+          <button onclick="window.confirmSheetWhatsApp(${product.id})" class="w-full py-2.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-xl text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-emerald-100 transition-colors">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            <span>Order via WhatsApp VIP</span>
+          </button>
+        </div>
+
+        <p class="text-[10px] text-center text-stone-400 mt-3">Free Express Delivery on orders above ₹2,500 • Kochi Atelier Handcraft</p>
+      </div>
+    `;
+
+    backdrop.classList.add('active');
+    sheet.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.selectSheetSize = function (btn, size) {
+    window.currentSheetSize = size;
+    document.querySelectorAll('#sheet-sizes-row .sheet-size-pill').forEach(b => {
+      b.className = 'sheet-size-pill px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-200 text-stone-700 hover:border-stone-400 transition-all';
+    });
+    btn.className = 'sheet-size-pill px-3 py-1.5 rounded-xl text-xs font-semibold border border-stone-900 bg-stone-900 text-white transition-all';
+  };
+
+  window.adjustSheetQty = function (delta) {
+    window.currentSheetQty = Math.max(1, Math.min(10, (window.currentSheetQty || 1) + delta));
+    const valEl = document.getElementById('sheet-qty-val');
+    if (valEl) valEl.textContent = window.currentSheetQty;
+  };
+
+  window.closeQuickAddSheet = function () {
+    const sheet = document.getElementById('quick-add-sheet');
+    const backdrop = document.getElementById('drawer-backdrop');
+    if (sheet) sheet.classList.remove('open');
+    if (backdrop && (!cartDrawer || !cartDrawer.classList.contains('open')) && (!wishlistDrawer || !wishlistDrawer.classList.contains('open')) && (!mobileMenuDrawer || !mobileMenuDrawer.classList.contains('open'))) {
+      backdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.confirmSheetAddToBag = function (productId) {
+    window.addToCart(productId, window.currentSheetSize || 'Standard', window.currentSheetQty || 1);
+    window.closeQuickAddSheet();
+  };
+
+  window.confirmSheetBuyNow = function (productId) {
+    window.closeQuickAddSheet();
+    window.openCheckoutSingle(productId, window.currentSheetSize || 'Standard');
+  };
+
+  window.confirmSheetWhatsApp = function (productId) {
+    const product = (window.AAINAA_PRODUCTS || []).find(p => p.id === productId);
+    if (!product) return;
+    const text = `Hello Jaleena / AAINAA Studio,\nI would like to order: *${product.title}*\nSize: *${window.currentSheetSize || 'Standard'}* | Quantity: ${window.currentSheetQty || 1}\nPrice: ${formatINR(product.price * (window.currentSheetQty || 1))}\n\nPlease confirm availability and studio UPI details.`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+  };
 
   // --- Wishlist System ---
   function saveWishlist() {
@@ -918,6 +1057,7 @@
         window.closeCart();
         window.closeWishlist();
         window.closeMobileMenu();
+        window.closeQuickAddSheet();
       });
     }
 
@@ -928,9 +1068,26 @@
         window.closeQuickView();
         window.closeCheckout();
         window.closeMobileMenu();
+        window.closeQuickAddSheet();
       }
     });
   }
+
+  window.filterByCategory = function (category) {
+    currentCategory = category;
+    filterPills.forEach(p => {
+      if ((p.dataset.category || '') === category) {
+        p.classList.add('active');
+      } else {
+        p.classList.remove('active');
+      }
+    });
+    renderProducts();
+    const catalogEl = document.getElementById('catalog');
+    if (catalogEl) {
+      catalogEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   window.resetFilters = function () {
     currentCategory = 'All';

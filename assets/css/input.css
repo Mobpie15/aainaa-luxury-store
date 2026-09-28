@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 /* ==========================================================================
-   AAINAA DESIGNS — BESPOKE LUXURY STYLESHEET
-   The Luxury of Simplicity • Kakkanad, Kochi
+   AAINAA DESIGNS — LUXURY MOBILE-FIRST COMMERCE STYLESHEET
+   The Luxury of Simplicity • Kakkanad, Kochi, Kerala
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
@@ -27,7 +27,7 @@
   --shadow-drawer: -10px 0 50px rgba(20, 23, 22, 0.25);
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: all 0.2s ease;
 }
 
@@ -50,7 +50,6 @@ body {
   width: 100%;
 }
 
-/* Prevent horizontal scroll bleed on mobile */
 html, body {
   max-width: 100%;
   overflow-x: clip;
@@ -61,13 +60,21 @@ html, body {
   color: var(--text-ink);
 }
 
-/* Typography Utility */
 .font-serif {
   font-family: var(--font-serif);
 }
 
 .font-sans {
   font-family: var(--font-sans);
+}
+
+/* Hide scrollbars for neat mobile chips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Marquee Infinite Ticker */
@@ -94,7 +101,7 @@ html, body {
   animation-play-state: paused;
 }
 
-/* Luxury Card Image Reveal */
+/* Luxury Image Wrapper */
 .luxury-image-wrapper {
   overflow: hidden;
   position: relative;
@@ -106,10 +113,10 @@ html, body {
 }
 
 .luxury-card:hover .luxury-image-wrapper img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
-/* Hero Festive Image Position - Center the model properly */
+/* Hero Model Alignment */
 .hero-model-img {
   object-position: 82% 20%;
 }
@@ -120,7 +127,7 @@ html, body {
   }
 }
 
-/* CTA Buttons */
+/* Buttons */
 .btn-gold {
   background: linear-gradient(135deg, #c5a059 0%, #b89146 100%);
   color: #ffffff;
@@ -132,7 +139,7 @@ html, body {
 .btn-gold:hover {
   background: linear-gradient(135deg, #b89146 0%, #99742e 100%);
   transform: translateY(-2px);
-  box-shadow: 0 12px 25px -8px rgba(197, 160, 89, 0.45);
+  box-shadow: 0 10px 22px -6px rgba(197, 160, 89, 0.45);
 }
 
 .btn-dark {
@@ -144,7 +151,7 @@ html, body {
 .btn-dark:hover {
   background: #252b29;
   transform: translateY(-2px);
-  box-shadow: 0 12px 25px -8px rgba(20, 23, 22, 0.25);
+  box-shadow: 0 10px 22px -6px rgba(20, 23, 22, 0.25);
 }
 
 .btn-outline-gold {
@@ -160,7 +167,7 @@ html, body {
   transform: translateY(-2px);
 }
 
-/* Navigation */
+/* Glassmorphism Navigation */
 .nav-glass {
   background: rgba(251, 250, 248, 0.94);
   backdrop-filter: blur(12px);
@@ -175,10 +182,16 @@ html, body {
 }
 
 /* ==========================================================================
-   DRAWERS & MODALS — BULLETPROOF MOBILE BEHAVIOR
+   DRAWERS & BOTTOM SHEETS — PURE MOBILE PERFECTION
    ========================================================================== */
 
 .drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 50;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -204,7 +217,7 @@ html, body {
   transform: translateX(100%);
   visibility: hidden;
   pointer-events: none;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.38s;
   box-shadow: var(--shadow-drawer);
 }
 
@@ -227,7 +240,7 @@ html, body {
   transform: translateX(-100%);
   visibility: hidden;
   pointer-events: none;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.38s;
   box-shadow: 10px 0 50px rgba(20, 23, 22, 0.25);
 }
 
@@ -237,7 +250,32 @@ html, body {
   pointer-events: auto;
 }
 
-/* Modals */
+/* Mobile Quick-Add Bottom Sheet (Slides up from bottom) */
+.bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 85vh;
+  background-color: #ffffff;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  z-index: 65;
+  transform: translateY(105%);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+.bottom-sheet.open {
+  transform: translateY(0%);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Modal Wrappers */
 .modal-wrapper {
   position: fixed;
   inset: 0;
@@ -256,7 +294,7 @@ html, body {
   transform: scale(1);
 }
 
-/* Filter Tag Pills */
+/* Category Filter Pills */
 .filter-pill {
   transition: var(--transition-fast);
   border: 1px solid var(--border-subtle);
@@ -286,7 +324,7 @@ html, body {
   box-shadow: 0 12px 28px -4px rgba(37, 211, 102, 0.6);
 }
 
-/* Toast Notifications */
+/* Toast */
 #toast-container {
   pointer-events: none;
 }
@@ -304,89 +342,110 @@ html, body {
 }
 
 /* ==========================================================================
-   SAFE REVEAL ANIMATIONS (NO BLANK OPACITY: 0 TRAP)
+   LUXURY APPEAR ANIMATIONS (SMOOTH, SILKY, AND 100% RELIABLE)
    ========================================================================== */
 
-/* Elements are VISIBLE by default to guarantee 0 blank screens */
-.reveal, .reveal-scale, .reveal-left, .reveal-right {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+@keyframes luxFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Progressive enhancement: when JS observer initializes, it adds js-observer-ready to body */
-body.js-ready .reveal:not(.visible) {
-  opacity: 0.05;
-  transform: translateY(24px);
+@keyframes luxScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-body.js-ready .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-body.js-ready .reveal-scale:not(.visible) {
-  opacity: 0.05;
-  transform: scale(0.95) translateY(16px);
-}
-
-body.js-ready .reveal-scale.visible {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-
-/* Hero Subtle Load Animation */
-@keyframes softHeroFade {
-  0% { opacity: 0.4; transform: translateY(12px); }
-  100% { opacity: 1; transform: translateY(0); }
+/* Hero Staggered Load Animations */
+.hero-anim-badge {
+  animation: luxFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
 }
 
 .hero-anim-title {
-  animation: softHeroFade 0.6s ease-out forwards;
+  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
 }
 
 .hero-anim-desc {
-  animation: softHeroFade 0.7s ease-out 0.1s forwards;
+  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
 }
 
 .hero-anim-cta {
-  animation: softHeroFade 0.7s ease-out 0.2s forwards;
+  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
 }
 
-/* Card Hover Physics */
+.hero-anim-stats {
+  animation: luxFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+.hero-img-anim {
+  animation: luxScaleIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+/* Scroll-triggered Appear Elements */
+.appear-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.appear-on-scroll.appeared {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.appear-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.appear-scale.appeared {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger Helpers */
+.stagger-1 { transition-delay: 80ms !important; }
+.stagger-2 { transition-delay: 160ms !important; }
+.stagger-3 { transition-delay: 240ms !important; }
+.stagger-4 { transition-delay: 320ms !important; }
+
+/* Product Card Physics */
 .luxury-card {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
 }
 
 .luxury-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 35px -8px rgba(20, 23, 22, 0.1);
-  border-color: rgba(197, 160, 89, 0.5);
+  box-shadow: 0 14px 30px -8px rgba(20, 23, 22, 0.1);
+  border-color: rgba(197, 160, 89, 0.45);
 }
 
-/* Wishlist Heart */
+/* Wishlist Button */
 .wishlist-btn {
-  transition: all 0.25s ease;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.wishlist-btn:hover {
-  transform: scale(1.12);
+.wishlist-btn:active {
+  transform: scale(1.25);
 }
 
 .wishlist-btn.active svg {
   fill: #e11d48;
   stroke: #e11d48;
-}
-
-/* Product Gallery */
-.thumb-btn {
-  transition: all 0.2s ease;
-  border: 2px solid transparent;
-}
-
-.thumb-btn.active {
-  border-color: var(--accent-gold);
-  transform: scale(0.96);
 }
 
 /* Accordion */
@@ -417,8 +476,8 @@ body.js-ready .reveal-scale.visible {
   right: 0;
   z-index: 40;
   background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-top: 1px solid var(--border-subtle);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
 }
@@ -454,4 +513,28 @@ body.js-ready .reveal-scale.visible {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+/* Badge styling */
+.badge-gold {
+  background: #fbf6ec;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  color: #9c7731;
+}
+
+/* Reduced Motion Override for Accessibility & Battery Saver */
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim-badge,
+  .hero-anim-title,
+  .hero-anim-desc,
+  .hero-anim-cta,
+  .hero-anim-stats,
+  .hero-img-anim,
+  .appear-on-scroll,
+  .appear-scale {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }

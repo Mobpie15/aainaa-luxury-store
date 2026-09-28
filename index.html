@@ -89,6 +89,30 @@
   </header>
 
   <!-- =========================================================================
+       2B. MOBILE QUICK CATEGORY HORIZONTAL STRIP (Shop with 1 tap)
+       ========================================================================= -->
+  <div class="lg:hidden bg-[var(--bg-canvas)] border-b border-[var(--border-subtle)] py-2.5 px-3 overflow-x-auto no-scrollbar whitespace-nowrap sticky top-[53px] z-30 shadow-xs backdrop-blur-md bg-white/95">
+    <div class="flex items-center gap-2 text-xs">
+      <button onclick="window.filterByCategory('All')" class="px-3.5 py-1.5 rounded-full bg-stone-900 text-white font-medium text-[11px] uppercase tracking-wider flex items-center gap-1 shadow-xs transition-transform active:scale-95">
+        <span>✦</span>
+        <span>All Silhouettes</span>
+      </button>
+      <button onclick="window.filterByCategory('Kaftans & Dresses')" class="px-3.5 py-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-800 font-medium text-[11px] uppercase tracking-wider whitespace-nowrap border border-stone-200/80 transition-transform active:scale-95">
+        <span>Kaftans & Dresses</span>
+      </button>
+      <button onclick="window.filterByCategory('Bespoke Suits')" class="px-3.5 py-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-800 font-medium text-[11px] uppercase tracking-wider whitespace-nowrap border border-stone-200/80 transition-transform active:scale-95">
+        <span>Mul Chanderi Suits</span>
+      </button>
+      <button onclick="window.filterByCategory('Co-ord Sets')" class="px-3.5 py-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-800 font-medium text-[11px] uppercase tracking-wider whitespace-nowrap border border-stone-200/80 transition-transform active:scale-95">
+        <span>Silk Co-ords</span>
+      </button>
+      <button onclick="window.filterByCategory('Artisanal Fabrics')" class="px-3.5 py-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-800 font-medium text-[11px] uppercase tracking-wider whitespace-nowrap border border-stone-200/80 transition-transform active:scale-95">
+        <span>Pure Ajrakh Fabrics</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================================
        3. HERO EDITORIAL SECTION
        ========================================================================= -->
   <section class="relative bg-[var(--bg-card)] overflow-hidden border-b border-[var(--border-subtle)]">
@@ -172,7 +196,7 @@
     <div class="max-w-7xl mx-auto px-4 md:px-10">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         
-        <div class="reveal stagger-1 flex items-start gap-4">
+        <div class="appear-on-scroll stagger-1 flex items-start gap-4">
           <div class="w-10 h-10 rounded-xl bg-white border border-[var(--border-gold)] flex items-center justify-center flex-shrink-0 text-[var(--accent-gold-dark)] shadow-sm">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
@@ -182,7 +206,7 @@
           </div>
         </div>
 
-        <div class="reveal stagger-2 flex items-start gap-4">
+        <div class="appear-on-scroll stagger-2 flex items-start gap-4">
           <div class="w-10 h-10 rounded-xl bg-white border border-[var(--border-gold)] flex items-center justify-center flex-shrink-0 text-[var(--accent-gold-dark)] shadow-sm">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24M14.83 14.83l4.24 4.24M14.83 9.17l4.24-4.24M4.93 19.07l4.24-4.24"/></svg>
           </div>
@@ -192,7 +216,7 @@
           </div>
         </div>
 
-        <div class="reveal stagger-3 flex items-start gap-4">
+        <div class="appear-on-scroll stagger-3 flex items-start gap-4">
           <div class="w-10 h-10 rounded-xl bg-white border border-[var(--border-gold)] flex items-center justify-center flex-shrink-0 text-[var(--accent-gold-dark)] shadow-sm">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
@@ -202,7 +226,7 @@
           </div>
         </div>
 
-        <div class="reveal stagger-4 flex items-start gap-4">
+        <div class="appear-on-scroll stagger-4 flex items-start gap-4">
           <div class="w-10 h-10 rounded-xl bg-white border border-[var(--border-gold)] flex items-center justify-center flex-shrink-0 text-[var(--accent-gold-dark)] shadow-sm">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
           </div>
@@ -222,7 +246,7 @@
   <section id="collections" class="py-20 bg-[var(--bg-canvas)]">
     <div class="max-w-7xl mx-auto px-4 md:px-10">
       
-      <div class="reveal text-center max-w-xl mx-auto mb-14">
+      <div class="appear-on-scroll text-center max-w-xl mx-auto mb-14">
         <span class="text-xs font-semibold uppercase tracking-widest text-[var(--accent-gold-dark)]">Curated Editions</span>
         <h2 class="font-serif text-3xl sm:text-4xl font-light text-[var(--text-ink)] mt-2">
           Signature Silhouettes
@@ -233,7 +257,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <!-- Collection 1 -->
-        <div class="luxury-card reveal reveal-scale stagger-1 group rounded-3xl overflow-hidden bg-white border border-[var(--border-subtle)] shadow-sm hover:shadow-xl transition-all duration-500">
+        <div class="luxury-card appear-on-scroll appear-scale stagger-1 group rounded-3xl overflow-hidden bg-white border border-[var(--border-subtle)] shadow-sm hover:shadow-xl transition-all duration-500">
           <div class="luxury-image-wrapper aspect-[3/4] relative">
             <img src="assets/images/products/09_modal-silk-kaftan-dress-soft-ivory-copy.png" alt="Modal Silk Kaftans" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -253,7 +277,7 @@
         </div>
 
         <!-- Collection 2 -->
-        <div class="luxury-card reveal reveal-scale stagger-2 group rounded-3xl overflow-hidden bg-white border border-[var(--border-subtle)] shadow-sm hover:shadow-xl transition-all duration-500">
+        <div class="luxury-card appear-on-scroll appear-scale stagger-2 group rounded-3xl overflow-hidden bg-white border border-[var(--border-subtle)] shadow-sm hover:shadow-xl transition-all duration-500">
           <div class="luxury-image-wrapper aspect-[3/4] relative">
             <img src="assets/images/products/17_charcoal-grey-mul-chanderi-embroidered-f.png" alt="Mul Chanderi Suits" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -273,7 +297,7 @@
         </div>
 
         <!-- Collection 3 -->
-        <div class="luxury-card reveal reveal-scale stagger-3 group rounded-3xl overflow-hidden bg-white border border-[var(--border-subtle)] shadow-sm hover:shadow-xl transition-all duration-500">
+        <div class="luxury-card appear-on-scroll appear-scale stagger-3 group rounded-3xl overflow-hidden bg-white border border-[var(--border-subtle)] shadow-sm hover:shadow-xl transition-all duration-500">
           <div class="luxury-image-wrapper aspect-[3/4] relative">
             <img src="assets/images/products/01_premium-quality-cotton-with-elegant-bloc.png" alt="Artisanal Hand-Block Fabrics" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -304,7 +328,7 @@
     <div class="max-w-7xl mx-auto px-4 md:px-10">
       
       <!-- Section Header -->
-      <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div class="appear-on-scroll flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
           <span class="text-xs font-semibold uppercase tracking-widest text-[var(--accent-gold-dark)]">The Full Archive</span>
           <h2 class="font-serif text-3xl sm:text-4xl font-light text-[var(--text-ink)] mt-1.5">
@@ -321,7 +345,7 @@
       </div>
 
       <!-- Filter Pills -->
-      <div class="reveal stagger-1 flex items-center gap-2.5 overflow-x-auto pb-4 mb-10 scrollbar-none">
+      <div class="appear-on-scroll stagger-1 flex items-center gap-2.5 overflow-x-auto pb-4 mb-10 scrollbar-none">
         <button class="filter-pill active px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase whitespace-nowrap" data-category="All">
           All Silhouettes
         </button>
@@ -355,7 +379,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         <!-- Left Portrait / Studio Shot -->
-        <div class="lg:col-span-5 relative reveal reveal-left">
+        <div class="lg:col-span-5 relative appear-on-scroll">
           <div class="luxury-image-wrapper rounded-3xl overflow-hidden shadow-xl aspect-[3/4] border border-[var(--border-gold)]">
             <img src="assets/images/branding/banner_festive_2.png" alt="Aainaa Designs Studio" class="w-full h-full object-cover">
           </div>
@@ -367,7 +391,7 @@
         </div>
 
         <!-- Right Story & Philosophy -->
-        <div class="lg:col-span-7 space-y-6 lg:pl-6 reveal reveal-right">
+        <div class="lg:col-span-7 space-y-6 lg:pl-6 appear-on-scroll">
           <span class="text-xs font-semibold uppercase tracking-widest text-[var(--accent-gold-dark)]">The Founder's Note</span>
           
           <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[var(--text-ink)] leading-tight">
@@ -406,7 +430,7 @@
        ========================================================================= -->
   <section id="bespoke" class="py-16 bg-[var(--text-ink)] text-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 md:px-10 relative z-10">
-      <div class="reveal reveal-scale max-w-3xl mx-auto text-center space-y-6">
+      <div class="appear-on-scroll appear-scale max-w-3xl mx-auto text-center space-y-6">
         <span class="px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-[var(--accent-gold-light)] text-[11px] font-bold tracking-widest uppercase">
           Zero Size Stigmas
         </span>
@@ -684,6 +708,11 @@
        14. TOAST NOTIFICATIONS CONTAINER
        ========================================================================= -->
   <div id="toast-container" class="fixed bottom-24 lg:bottom-6 left-4 lg:left-6 z-50 flex flex-col gap-2"></div>
+
+  <!-- =========================================================================
+       15. MOBILE QUICK-ADD BOTTOM SHEET (Shopping In 1 Tap)
+       ========================================================================= -->
+  <div id="quick-add-sheet" class="bottom-sheet"></div>
 
   <!-- Scripts -->
   <script src="assets/js/products-data.js"></script>
